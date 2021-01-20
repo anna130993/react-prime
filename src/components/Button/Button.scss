@@ -24,4 +24,11 @@
       background: darken($color-warning, 5%);
     }
   }
+
+  &.suspend {
+    background: #e17055;
+    &:hover {
+      background: darken(#e17055, 5%);
+    }
+  }
 }
