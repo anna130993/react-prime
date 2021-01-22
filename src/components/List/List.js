@@ -6,7 +6,6 @@ import Column from '../Column/Column.js';
 import {settings} from '../../data/dataStore.js';
 import ReactHtmlParser from 'react-html-parser';
 import Creator from '../Creator/Creator.js';
-import MenuBtn from '../MenuBtn';
 
 class List extends React.Component {
   state = {
@@ -46,7 +45,7 @@ class List extends React.Component {
         <Hero titleText={this.props.title} imgBcg={this.props.image}/>
         <div className={styles.description}>
           {ReactHtmlParser(this.props.description)}
-          <span>           </span><MenuBtn />
+          <span>           </span>
         </div>
         <div className={styles.columns}>
           {this.state.columns.map(({key, ...columnProps}) => (
