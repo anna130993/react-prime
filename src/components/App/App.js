@@ -6,7 +6,7 @@ import Creator from '../Creator/Creator.js';
 
 class App extends React.Component {
   state = {
-    lists: listData ? [Object.assign({key: 0,}, listData)] : [],
+    lists: listData ? [Object.assign({key: 0}, listData)] : [],
   }
 
   addList(title){
@@ -18,10 +18,10 @@ class App extends React.Component {
             key: state.lists.length ? state.lists[state.lists.length-1].key+1 : 0,
             title,
             columns: [],
-          }
-        ]
+          },
+        ],
       }
-    ))
+    ));
   }
 
   render() {
@@ -32,7 +32,7 @@ class App extends React.Component {
         <List {...listData} />
         <Creator text={settings.listCreatorText} action={title => this.addList(title)}/>
       </main>
-    )
+    );
   }
 }
 

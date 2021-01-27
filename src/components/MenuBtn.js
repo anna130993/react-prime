@@ -1,6 +1,5 @@
 import React from 'react';
-import List from './List/List.js';
 
-const MenuBtn = props => (<a className={'fas fa-bars'}></a>);
+const MenuBtn = () => (<a className={'fas fa-bars'}></a>);
 
 export default MenuBtn;
