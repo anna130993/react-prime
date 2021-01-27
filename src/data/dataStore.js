@@ -9,6 +9,7 @@ export const settings = {
   },
   defaultListDescription: '<p>I can do all the things!!!</p>',
   defaultColumnIcon: 'list-alt',
+  defaultImage: 'https://images.pexels.com/photos/3651825/pexels-photo-3651825.jpeg?cs=srgb&dl=pexels-luca-nardone-3651825.jpg&fm=jpg',
 };
 
 export const pageContents = {
