@@ -29,8 +29,12 @@ class App extends React.Component {
       <main className={styles.component}>
         <h1 className={styles.title}>{pageContents.title}</h1>
         <h2 className={styles.subtitle}>{pageContents.subtitle}</h2>
-        <List {...listData} />
-        <Creator text={settings.listCreatorText} action={title => this.addList(title)}/>
+        {this.state.lists.map(({key, ...listProps}) => (
+          <List key={key} {...listProps} />
+        ))}
+        <div>
+          <Creator text={settings.listCreatorText} action={title => this.addList(title)} warning={true} />
+        </div>
       </main>
     );
   }
