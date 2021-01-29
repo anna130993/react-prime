@@ -8,40 +8,35 @@ import ReactHtmlParser from 'react-html-parser';
 import Creator from '../Creator/Creator.js';
 import MenuBtn from '../MenuBtn';
 
-class List extends React.Component {
-  static propTypes = {
-    title: PropTypes.node.isRequired,
-    description: PropTypes.node,
-    columns: PropTypes.array,
-    image: PropTypes.string.isRequired,
-    addColumn: PropTypes.func,
-  }
+const List = ({title, image, description, columns, addColumn}) => (
+  <section className={styles.component}>
+    <Hero titleText={title} imgBcg={image}/>
+    <div className={styles.description}>
+      {ReactHtmlParser(description)}
+      <span>           </span><MenuBtn />
+    </div>
+    <div className={styles.columns}>
+      {columns.map(columnData => (
+        <Column key={columnData.id} {...columnData} />
+      ))}
+    </div>
+    <div className={styles.creator}>
+      <Creator text={settings.columnCreatorText} action={addColumn}/>
+    </div>
+  </section>
+);
 
-  static defaultProps = {
-    description: settings.defaultListDescription,
-    image: settings.defaultImage,
-  }
+List.propTypes = {
+  title: PropTypes.node.isRequired,
+  description: PropTypes.node,
+  columns: PropTypes.array,
+  image: PropTypes.string.isRequired,
+  addColumn: PropTypes.func,
+};
 
-  render() {
-    const {title, image, description, columns, addColumn} = this.props;
-    return (
-      <section className={styles.component}>
-        <Hero titleText={title} imgBcg={image}/>
-        <div className={styles.description}>
-          {ReactHtmlParser(description)}
-          <span>           </span><MenuBtn />
-        </div>
-        <div className={styles.columns}>
-          {columns.map(columnData => (
-            <Column key={columnData.id} {...columnData} />
-          ))}
-        </div>
-        <div className={styles.creator}>
-          <Creator text={settings.columnCreatorText} action={addColumn}/>
-        </div>
-      </section>
-    );
-  }
-}
+List.defaultProps = {
+  description: settings.defaultListDescription,
+  image: settings.defaultImage,
+};
 
 export default List;
