@@ -7,23 +7,26 @@ import {settings} from '../../data/dataStore.js';
 import ReactHtmlParser from 'react-html-parser';
 import Creator from '../Creator/Creator.js';
 import MenuBtn from '../MenuBtn';
+import Container from '../Container/Container.js';
 
 const List = ({title, image, description, columns, addColumn}) => (
-  <section className={styles.component}>
-    <Hero titleText={title} imgBcg={image}/>
-    <div className={styles.description}>
-      {ReactHtmlParser(description)}
-      <span>           </span><MenuBtn />
-    </div>
-    <div className={styles.columns}>
-      {columns.map(columnData => (
-        <Column key={columnData.id} {...columnData} />
-      ))}
-    </div>
-    <div className={styles.creator}>
-      <Creator text={settings.columnCreatorText} action={addColumn}/>
-    </div>
-  </section>
+  <Container>
+    <section className={styles.component}>
+      <Hero titleText={title} imgBcg={image}/>
+      <div className={styles.description}>
+        {ReactHtmlParser(description)}
+        <span>           </span><MenuBtn />
+      </div>
+      <div className={styles.columns}>
+        {columns.map(columnData => (
+          <Column key={columnData.id} {...columnData} />
+        ))}
+      </div>
+      <div className={styles.creator}>
+        <Creator text={settings.columnCreatorText} action={addColumn}/>
+      </div>
+    </section>
+  </Container>
 );
 
 List.propTypes = {
