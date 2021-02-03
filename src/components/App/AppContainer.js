@@ -10,13 +10,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-  addList: (title) => dispatch(createActionAddList({
+  addList: title => dispatch(createActionAddList({
     listId: props.id,
     title,
   })),
-  moveCard: (payload) => dispatch(createAction_moveCard({
-    payload,
-  })),
+  moveCard: payload => dispatch(createAction_moveCard(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
