@@ -11,9 +11,25 @@ export const settings = {
     defaultText: 'Search...',
     icon: 'search',
   },
+  info: {
+    defaultTitle: 'Info',
+    defaultText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    defaultImage: 'https://images.pexels.com/photos/4060935/pexels-photo-4060935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  },
+  FAQ: {
+    defaultTitle: 'FAQ',
+    defaultText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    defaultImage: 'https://images.pexels.com/photos/1122639/pexels-photo-1122639.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+  },
+  header: {
+    defaultIcon: 'bolt',
+    linkHome: 'Home',
+    linkFAQ: 'FAQ',
+    linkInfo: 'Info',
+  },
   defaultListDescription: '<p>I can do all the things!!!</p>',
   defaultColumnIcon: 'list-alt',
-  defaultImage: 'https://images.pexels.com/photos/3651825/pexels-photo-3651825.jpeg?cs=srgb&dl=pexels-luca-nardone-3651825.jpg&fm=jpg',
+  defaultImage: 'https://images.pexels.com/photos/4550763/pexels-photo-4550763.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
 };
 
 export const pageContents = {
