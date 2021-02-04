@@ -22,7 +22,7 @@ class Search extends React.Component {
     value: this.props.searchString,
   }
 
-  componentKeepSearchString() {
+  componentDidMount() {
     if(this.props.history.location.pathname.startsWith('/search/')) {
       if(!this.state.value) {
         const searchStringFromPath = this.props.history.location.pathname.replace('/search/', '');
