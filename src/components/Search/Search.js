@@ -11,8 +11,6 @@ class Search extends React.Component {
     text: PropTypes.string,
     searchString: PropTypes.string,
     changeSearchString: PropTypes.func,
-    countVisible: PropTypes.number,
-    countAll: PropTypes.number,
     history: PropTypes.object,
   }
 
@@ -54,7 +52,7 @@ class Search extends React.Component {
   }
 
   render() {
-    const {text, countVisible, countAll} = this.props;
+    const {text} = this.props;
     const {value} = this.state;
     const {icon} = settings.search;
     return (
@@ -68,8 +66,6 @@ class Search extends React.Component {
         <div className={styles.buttons}>
           <Button onClick={() => this.handleOK()}><Icon name={icon} /></Button>
         </div>
-        { countVisible !== countAll && (<div>) {`${countVisible} / ${countAll}` }
-        </div>)}
       </div>
     );
   }
