@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import { settings } from '../../data/dataStore.js';
 import Icon from '../Icon.js';
-import Container from '../Container/Container.js';
+import {withRouter} from 'react-router';
 
 class Search extends React.Component {
   static propTypes = {
@@ -13,6 +13,7 @@ class Search extends React.Component {
     changeSearchString: PropTypes.func,
     countVisible: PropTypes.number,
     countAll: PropTypes.number,
+    history: PropTypes.object,
   }
 
   static defaultProps = {
@@ -23,6 +24,18 @@ class Search extends React.Component {
     value: this.props.searchString,
   }
 
+  componentKeepSearchString() {
+    if(this.props.history.location.pathname.startsWith('/search/')) {
+      if(!this.state.value) {
+        const searchStringFromPath = this.props.history.location.pathname.replace('/search/', '');
+        this.setState({
+          value: searchStringFromPath,
+          visibleButtons: searchStringFromPath.length > 0,
+        });
+      }
+    }
+  }
+
   handleChange(event){
     this.setState({
       value: event.target.value,
@@ -31,7 +44,7 @@ class Search extends React.Component {
   }
 
   handleOK(){
-    this.props.changeSearchString(this.state.value);
+    this.props.history.push(`/search/${this.state.value}`);
   }
 
   componentDidUpdate(prevProps){
@@ -45,24 +58,21 @@ class Search extends React.Component {
     const {value} = this.state;
     const {icon} = settings.search;
     return (
-      <Container>
-        <div className={styles.component}>
-          <input
-            type='text'
-            placeholder={text}
-            value={value}
-            onChange={event => this.handleChange(event)}
-          />
-          <div className={styles.buttons}>
-            <Button onClick={() => this.handleOK()}><Icon name={icon} /></Button>
-          </div>
-          <div>
-            { countVisible == countAll ? '' : `${countVisible} / ${countAll}` }
-          </div>
+      <div className={styles.component}>
+        <input
+          type='text'
+          placeholder={text}
+          value={value}
+          onChange={event => this.handleChange(event)}
+        />
+        <div className={styles.buttons}>
+          <Button onClick={() => this.handleOK()}><Icon name={icon} /></Button>
         </div>
-      </Container>
+        { countVisible !== countAll && (<div>) {`${countVisible} / ${countAll}` }
+        </div>)}
+      </div>
     );
   }
 }
 
-export default Search;
+export default withRouter(Search);

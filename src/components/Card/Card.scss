@@ -8,3 +8,13 @@
   margin: 0 0 $base-size 0;
   border-radius: $radius;
 }
+
+.origin {
+  text-decoration: none;
+  color: $color-dark;
+  font-size: $base-size;
+  font-weight: bold;
+    &:hover {
+      color: $color-hover;
+    }
+}

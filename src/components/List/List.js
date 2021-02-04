@@ -1,40 +1,69 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './List.scss';
 import Hero from '../Hero/Hero.js';
-import PropTypes from 'prop-types';
-import Column from '../Column/ColumnContainer.js';
+import Column from '../Column/ColumnContainer';
 import {settings} from '../../data/dataStore.js';
 import ReactHtmlParser from 'react-html-parser';
 import Creator from '../Creator/Creator.js';
-import MenuBtn from '../MenuBtn';
 import Container from '../Container/Container.js';
+import {DragDropContext} from 'react-beautiful-dnd';
 
-const List = ({title, image, description, columns, addColumn}) => (
-  <Container>
-    <section className={styles.component}>
-      <Hero titleText={title} imgBcg={image}/>
-      <div className={styles.description}>
-        {ReactHtmlParser(description)}
-        <span>           </span><MenuBtn />
-      </div>
-      <div className={styles.columns}>
-        {columns.map(columnData => (
-          <Column key={columnData.id} {...columnData} />
-        ))}
-      </div>
-      <div className={styles.creator}>
-        <Creator text={settings.columnCreatorText} action={addColumn}/>
-      </div>
-    </section>
-  </Container>
-);
+const List = ({title, image, description, columns, addColumn, moveCard}) => {
+
+  const moveCardHandler = result => {
+    if(
+      result.destination
+      &&
+      (
+        result.destination.index != result.source.index
+        ||
+        result.destination.droppableId != result.source.droppableId
+      )
+    ){
+      moveCard({
+        id: result.draggableId,
+        dest: {
+          index: result.destination.index,
+          columnId: result.destination.droppableId,
+        },
+        src: {
+          index: result.source.index,
+          columnId: result.source.droppableId,
+        },
+      });
+    }
+  };
+
+  return (
+    <Container>
+      <section className={styles.component}>
+        <Hero titleText={title} imgBcg={image}/>
+        <div className={styles.description}>
+          {ReactHtmlParser(description)}
+        </div>
+        <DragDropContext onDragEnd={moveCardHandler}>
+          <div className={styles.columns}>
+            {columns.map(columnData => (
+              <Column key={columnData.id} {...columnData} />
+            ))}
+          </div>
+        </DragDropContext>
+        <div className={styles.creator}>
+          <Creator text={settings.columnCreatorText} action={addColumn}/>
+        </div>
+      </section>
+    </Container>
+  );
+};
 
 List.propTypes = {
   title: PropTypes.node.isRequired,
+  image: PropTypes.string,
   description: PropTypes.node,
   columns: PropTypes.array,
-  image: PropTypes.string.isRequired,
   addColumn: PropTypes.func,
+  moveCard: PropTypes.func,
 };
 
 List.defaultProps = {

@@ -96,6 +96,18 @@ const lists = [
     description: 'Interesting things I want to check out!',
     image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
   },
+  {
+    id: 'list-2',
+    title: 'What Would Ruth Bader Ginsburg Do',
+    description: 'What to do when you expect unexpected',
+    image: 'https://images.pexels.com/photos/6065106/pexels-photo-6065106.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+  },
+  {
+    id: 'list-3',
+    title: 'All The New Jazz!',
+    description: 'Paint the town red!',
+    image: 'https://images.pexels.com/photos/4951277/pexels-photo-4951277.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+  },
 ];
 
 const columns = [

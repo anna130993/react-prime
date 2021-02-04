@@ -1,7 +1,6 @@
 import {connect} from 'react-redux';
-import Home from './Home';
+import Home from './Home.js';
 import {createActionAddList, getNewList} from '../../../redux/listsRedux.js';
-import { createAction_moveCard } from '../../../redux/cardsRedux';
 
 const mapStateToProps = (state) => ({
   title: state.app.title,
@@ -14,7 +13,6 @@ const mapDispatchToProps = (dispatch, props) => ({
     listId: props.id,
     title,
   })),
-  moveCard: payload => dispatch(createAction_moveCard(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -7,7 +7,24 @@ import Icon from '../Icon.js';
 import Card from '../Card/Card.js';
 import {Droppable} from 'react-beautiful-dnd';
 
-const Column = ({title, icon, cards, addCard, id}) => {
+class Column extends React.Component {
+  static propTypes = {
+    title: PropTypes.node.isRequired,
+    icon: PropTypes.node,
+    cards: PropTypes.array,
+    addCard: PropTypes.func,
+    id: PropTypes.string,
+  };
+
+  static defaultProps = {
+    icon: settings.defaultColumnIcon,
+  };
+
+addCard = (title) => {
+  this.props.addCard(title, this.props.cards.length);
+}
+render (){
+  const {title, icon, cards, id} = this.props;
   const sortedCards = cards.sort((a, b) => a.index - b.index);
   return (
     <section className={styles.component}>
@@ -28,22 +45,11 @@ const Column = ({title, icon, cards, addCard, id}) => {
         </Droppable>
       </div>
       <div className={styles.creator}>
-        <Creator text={settings.cardCreatorText} action={addCard}/>
+        <Creator text={settings.cardCreatorText} action={this.addCard}/>
       </div>
     </section>
   );
-};
-
-Column.propTypes = {
-  title: PropTypes.node.isRequired,
-  icon: PropTypes.node,
-  cards: PropTypes.array,
-  addCard: PropTypes.func,
-  id: PropTypes.string,
-};
-
-Column.defaultProps = {
-  icon: settings.defaultColumnIcon,
-};
+}
+}
 
 export default Column;
